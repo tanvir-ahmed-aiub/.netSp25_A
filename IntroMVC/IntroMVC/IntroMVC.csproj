@@ -127,6 +127,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Degree.cs" />
+    <Compile Include="Models\Referee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +170,7 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Portfolio\Education.cshtml" />
     <Content Include="Views\Portfolio\Qualifiactions.cshtml" />
+    <Content Include="Views\Portfolio\References.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -53,5 +53,26 @@ namespace IntroMVC.Controllers
             }
             
         }
+        public ActionResult References() {
+            Referee r1 = new Referee() { 
+                Name ="Ref1",
+                Email="e1",
+                Designation="De1"
+            };
+            Referee r2 = new Referee()
+            {
+                Name = "Ref2",
+                Email = "e2",
+                Designation = "De2"
+            };
+            Referee r3 = new Referee()
+            {
+                Name = "Ref3",
+                Email = "e3",
+                Designation = "De3"
+            };
+            Referee[] refs = new Referee[] { r1, r2, r3 };
+            return View(refs);
+        }
     }
 }
