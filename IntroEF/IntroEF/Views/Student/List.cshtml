@@ -17,6 +17,7 @@ else {
             <th>Id</th>
             <th>Name</th>
             <th>Cgpa</th>
+            <th></th>
         </tr>
         @foreach (var item in Model)
         {
@@ -24,6 +25,11 @@ else {
                 <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>@item.Cgpa</td>
+                <td>
+                    <a href="/student/details/@item.Id" class="btn btn-primary">Details</a>
+                    <a href="/student/edit/@item.Id" class="btn btn-info">Edit</a>
+                    <a href="/student/delete/@item.Id"class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         }
     </table>
