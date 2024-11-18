@@ -22,9 +22,30 @@
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="StudentDB_F24_AModel.Student">
         <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="DId" ColumnName="DId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Cgpa" ColumnName="Cgpa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseStudents">
+      <EntityTypeMapping TypeName="StudentDB_F24_AModel.CourseStudent">
+        <MappingFragment StoreEntitySet="CourseStudents">
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="SId" ColumnName="SId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="StudentDB_F24_AModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Uname" ColumnName="Uname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

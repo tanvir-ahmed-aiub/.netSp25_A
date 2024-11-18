@@ -9,6 +9,7 @@
     <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DeptId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Department" Relationship="StudentDB_F24_AModel.FK_Courses_Departments" FromRole="Cours" ToRole="Department" />
+    <NavigationProperty Name="CourseStudents" Relationship="StudentDB_F24_AModel.FK_CourseStudents_Courses" FromRole="Cours" ToRole="CourseStudent" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -17,6 +18,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Courses" Relationship="StudentDB_F24_AModel.FK_Courses_Departments" FromRole="Department" ToRole="Cours" />
+    <NavigationProperty Name="Students" Relationship="StudentDB_F24_AModel.FK_Students_Departments" FromRole="Department" ToRole="Student" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -25,6 +27,9 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Cgpa" Type="Double" Nullable="false" />
+    <Property Name="DId" Type="Int32" />
+    <NavigationProperty Name="CourseStudents" Relationship="StudentDB_F24_AModel.FK_CourseStudents_Students" FromRole="Student" ToRole="CourseStudent" />
+    <NavigationProperty Name="Department" Relationship="StudentDB_F24_AModel.FK_Students_Departments" FromRole="Student" ToRole="Department" />
   </EntityType>
   <EntityContainer Name="StudentDB_F24_AEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Courses" EntityType="Self.Cours" />
@@ -34,6 +39,20 @@
       <End Role="Department" EntitySet="Departments" />
       <End Role="Cours" EntitySet="Courses" />
     </AssociationSet>
+    <EntitySet Name="CourseStudents" EntityType="StudentDB_F24_AModel.CourseStudent" />
+    <AssociationSet Name="FK_CourseStudents_Courses" Association="StudentDB_F24_AModel.FK_CourseStudents_Courses">
+      <End Role="Cours" EntitySet="Courses" />
+      <End Role="CourseStudent" EntitySet="CourseStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseStudents_Students" Association="StudentDB_F24_AModel.FK_CourseStudents_Students">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="CourseStudent" EntitySet="CourseStudents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Departments" Association="StudentDB_F24_AModel.FK_Students_Departments">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="StudentDB_F24_AModel.User" />
   </EntityContainer>
   <Association Name="FK_Courses_Departments">
     <End Type="StudentDB_F24_AModel.Department" Role="Department" Multiplicity="1" />
@@ -47,4 +66,60 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CourseStudent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SId" Type="Int32" Nullable="false" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cours" Relationship="StudentDB_F24_AModel.FK_CourseStudents_Courses" FromRole="CourseStudent" ToRole="Cours" />
+    <NavigationProperty Name="Student" Relationship="StudentDB_F24_AModel.FK_CourseStudents_Students" FromRole="CourseStudent" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_CourseStudents_Courses">
+    <End Type="StudentDB_F24_AModel.Cours" Role="Cours" Multiplicity="1" />
+    <End Type="StudentDB_F24_AModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseStudents_Students">
+    <End Type="StudentDB_F24_AModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="StudentDB_F24_AModel.CourseStudent" Role="CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="SId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Departments">
+    <End Type="StudentDB_F24_AModel.Department" Role="Department" Multiplicity="0..1" />
+    <End Type="StudentDB_F24_AModel.Student" Role="Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="DId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Uname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
