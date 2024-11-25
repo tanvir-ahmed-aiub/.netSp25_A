@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<form method="post">
+    <input type="text" name="FName" value="@Model.FName" placeholder="First Name" class="form-control" />
+    <p class="text-danger">@Html.ValidationMessage("FName")</p>
+    <input type="text" name="LName" value="@Model.LName" placeholder="Last Name" class="form-control" />
+    <p class="text-danger">@Html.ValidationMessage("LName")</p>
+    <input type="text" name="Email" value="@Model.Email" placeholder="Email" class="form-control" />
+    <p class="text-danger">@Html.ValidationMessage("Email")</p>
+    <select class="form-control" name="Semester">
+        <option selected disabled>---Semester---</option>
+        <option value="1">Spring</option>
+        <option value="2">Summer</option>
+        <option value="3">Fall</option>
+    </select>
+    <p class="text-danger">@Html.ValidationMessage("Semester")</p>
+    <input type="submit" class="btn btn-success" value="Create" />
+</form>
+
