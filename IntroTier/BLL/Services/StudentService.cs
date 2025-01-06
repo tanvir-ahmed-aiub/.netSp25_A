@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.DTOs;
+using DAL;
 using DAL.EF;
 using DAL.Repos;
 using System;
@@ -13,7 +14,7 @@ namespace BLL.Services
     public class StudentService
     {
         public static List<StudentDTO>  Get() {
-            var repo = new StudentRepo();
+            var repo = DataAccess.StudentDataAccess();
             var data = repo.Get();
 
             var config = new MapperConfiguration(cfg => {
@@ -30,8 +31,8 @@ namespace BLL.Services
             });
             var mapper = new Mapper(config);
             var ret = mapper.Map<Student>(s);
-            var repo = new StudentRepo();
-            repo.Create(ret);
+            var repo = DataAccess.StudentDataAccess();
+            repo.Add(ret);
 
         }
     }

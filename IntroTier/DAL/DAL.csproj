@@ -52,9 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="EF\Course.cs" />
     <Compile Include="EF\Student.cs" />
     <Compile Include="EF\UMSContext.cs" />
+    <Compile Include="Interfaces\IStudentRepo.cs" />
     <Compile Include="Migrations\202412300717122_InitDB.cs" />
     <Compile Include="Migrations\202412300717122_InitDB.designer.cs">
       <DependentUpon>202412300717122_InitDB.cs</DependentUpon>
@@ -64,6 +66,7 @@
     <Compile Include="Repos\CourseRepo.cs" />
     <Compile Include="Repos\Repo.cs" />
     <Compile Include="Repos\StudentRepo.cs" />
+    <Compile Include="Repos\StudentRepoV2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
