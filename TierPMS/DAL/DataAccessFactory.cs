@@ -20,5 +20,16 @@ namespace DAL
         public static IProductFeatures ProductFeatures() {
             return new ProductRepo();
         }
+        public static IRepo<User, string, User> UserData() { 
+            return new UserRepo();
+        }
+        public static IRepo<Token, string, Token> TokenData()
+        {
+            return new TokenRepo();
+        }
+        public static IAuth AuthData() {
+            return new UserRepo();
+        }
+
     }
 }

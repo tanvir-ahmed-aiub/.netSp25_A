@@ -55,17 +55,34 @@
     <Compile Include="EF\PMSContext.cs" />
     <Compile Include="EF\Tables\Category.cs" />
     <Compile Include="EF\Tables\Product.cs" />
+    <Compile Include="EF\Tables\Token.cs" />
+    <Compile Include="EF\Tables\User.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
     <Compile Include="Interfaces\IProductFeatures.cs" />
     <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202501130628313_DbUpdate.cs" />
     <Compile Include="Migrations\202501130628313_DbUpdate.designer.cs">
       <DependentUpon>202501130628313_DbUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202501190822162_UserTableAdded.cs" />
+    <Compile Include="Migrations\202501190822162_UserTableAdded.designer.cs">
+      <DependentUpon>202501190822162_UserTableAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202501190841599_TokenAdded.cs" />
+    <Compile Include="Migrations\202501190841599_TokenAdded.designer.cs">
+      <DependentUpon>202501190841599_TokenAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202501190842505_TokenUpdated.cs" />
+    <Compile Include="Migrations\202501190842505_TokenUpdated.designer.cs">
+      <DependentUpon>202501190842505_TokenUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\CategoryRepo.cs" />
     <Compile Include="Repos\ProductRepo.cs" />
     <Compile Include="Repos\Repo.cs" />
+    <Compile Include="Repos\TokenRepo.cs" />
+    <Compile Include="Repos\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -74,6 +91,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202501130628313_DbUpdate.resx">
       <DependentUpon>202501130628313_DbUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501190822162_UserTableAdded.resx">
+      <DependentUpon>202501190822162_UserTableAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501190841599_TokenAdded.resx">
+      <DependentUpon>202501190841599_TokenAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202501190842505_TokenUpdated.resx">
+      <DependentUpon>202501190842505_TokenUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
