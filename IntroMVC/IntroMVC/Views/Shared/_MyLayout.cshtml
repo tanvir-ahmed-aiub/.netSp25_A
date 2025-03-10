@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_MyLayout</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+        <h1>Header</h1>
+    </div>
+    <div> 
+        @RenderBody()
+    </div>
+    <div>
+        <h2>Footer</h2>
+    </div>
+</body>
+</html>

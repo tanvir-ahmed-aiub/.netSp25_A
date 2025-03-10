@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Students";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<h2>Students</h2>
+<table class="table table-bordered">
+    <tr>
+        <td>Name</td>
+        <td>Id</td>
+    </tr>
+    @foreach (var item in Model) { 
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Id</td>
+        </tr>
+    }
+
+</table>
+
