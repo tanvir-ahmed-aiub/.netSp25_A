@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>@ViewBag.Name</h3>
+<h4>@Request["Id"]</h4>
+<h4>@ViewBag.Email</h4>
+<h4>@Model.Gender</h4>
+
+<p class="text-danger">
+    @Html.ValidationSummary()
+</p>
+
+<h2>Index</h2>
+<form method="post">
+    <input type="text" class="form-control" value="@Model.Name" placeholder="Name" name="Name" />
+    <p class="text-danger">@Html.ValidationMessage("Name")</p>
+    <input type="text" class="form-control" value="@Model.Id" placeholder="Id" name="Id" />
+    <p class="text-danger">@Html.ValidationMessage("Id")</p>
+    <input type="text" class="form-control" value="@Model.Email" placeholder="Email" name="Email" />
+    <p class="text-danger">@Html.ValidationMessage("Email")</p>
+    Gender
+    <input type="radio" name="Gender" value="Male" />Male
+    <input type="radio" name="Gender" value="Female" />Female
+    <p class="text-danger">@Html.ValidationMessage("Gender")</p>
+    <br />
+    <input type="submit" value="Add" class="btn btn-primary" />
+</form>
+
