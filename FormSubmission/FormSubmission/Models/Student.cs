@@ -19,5 +19,9 @@ namespace FormSubmission.Models
         public string Email { get; set; }
         [Required]
         public string Gender { get; set; }
+        [Required]
+        public string Profession { get; set; }
+        [Required]
+        public string[] Hobbies { get; set; }
     }
 }

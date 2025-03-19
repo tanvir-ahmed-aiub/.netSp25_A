@@ -8,6 +8,33 @@
 <h4>@ViewBag.Email</h4>
 <h4>@Model.Gender</h4>
 
+@{ 
+    bool GetGender(string gender) {
+        if (Model.Gender != null && Model.Gender.Equals(gender)) {
+            return true;
+        }
+        return false;
+    }
+    bool GetProfession(string prof)
+    {
+        if (Model.Profession != null && Model.Profession.Equals(prof))
+        {
+            return true;
+        }
+        return false;
+    }
+    bool CheckHobbies(string hobby) {
+        if (Model.Hobbies != null) {
+            foreach (var h in Model.Hobbies) {
+                if (hobby.Equals(h)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
 <p class="text-danger">
     @Html.ValidationSummary()
 </p>
@@ -21,9 +48,23 @@
     <input type="text" class="form-control" value="@Model.Email" placeholder="Email" name="Email" />
     <p class="text-danger">@Html.ValidationMessage("Email")</p>
     Gender
-    <input type="radio" name="Gender" value="Male" />Male
-    <input type="radio" name="Gender" value="Female" />Female
+    <input type="radio" checked="@GetGender("Male")" name="Gender" value="Male" />Male
+    <input type="radio" checked="@GetGender("Female")" name="Gender" value="Female" />Female
     <p class="text-danger">@Html.ValidationMessage("Gender")</p>
+    <br />
+    <select class="form-control" name="Profession">
+        <option disabled selected>--Select Profession--</option>
+        <option selected="@GetProfession("Business")">Business</option>
+        <option selected="@GetProfession("Student")">Student</option>
+        <option selected="@GetProfession("Corporate")">Corporate</option>
+    </select>
+
+    Hobbies:
+    <input type="checkbox" checked="@CheckHobbies("Travelling")" name="Hobbies[]" value="Travelling" /> Travelling
+    <input type="checkbox" checked="@CheckHobbies("Sports")" name="Hobbies[]" value="Sports" /> Sports
+    <input type="checkbox" checked="@CheckHobbies("Gaming")" name="Hobbies[]" value="Gaming" /> Gaming
+    <input type="checkbox" checked="@CheckHobbies("Gardenning")" name="Hobbies[]" value="Gardenning" /> Gardenning
+    <p class="text-danger">@Html.ValidationMessage("Hobbies")</p>
     <br />
     <input type="submit" value="Add" class="btn btn-primary" />
 </form>
