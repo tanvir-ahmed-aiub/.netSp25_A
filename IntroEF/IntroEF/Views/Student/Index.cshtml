@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@if (TempData["Msg"] != null) { 
+    <p class="alert alert-success">@TempData["Msg"]</p>
+}
+<a href="/Student/Create">Create</a>
+@if (Model.Count != 0)
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Cgpa</td>
+            <td>Dob</td>
+            <td></td>
+        </tr>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Cgpa</td>
+                <td>@s.Dob.ToShortDateString()</td>
+                <td>
+                    <a href="/Student/Edit/@s.Id" class="btn btn-success">Edit</a>
+                    <a class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else { 
+    <h3>No Data</h3>
+}
+
