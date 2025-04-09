@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<form method="post">
+    <ul>
+
+        @foreach (var item in Model)
+        {
+            <li>
+                <input type="checkbox" value="@item.Id" name="Courses[]"/> @item.Name (@item.CourseStudents.Count/@item.MaxCapacity)
+            </li>
+        }
+
+    </ul>
+    <input type="submit" value="Register" class="btn btn-success" />
+</form>
+
