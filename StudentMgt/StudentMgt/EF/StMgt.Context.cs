@@ -18,6 +18,7 @@ namespace StudentMgt.EF
         public StudentMgt_AF25Entities()
             : base("name=StudentMgt_AF25Entities")
         {
+            //this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -14,24 +14,38 @@ namespace StudentMgt.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (Session["Id"] == null)
+            {
+                TempData["Msg"] = "Please give Student Id before registration";
+                return RedirectToAction("Index","Home");
+            }
             //discard already completed courses
             var courses = db.Courses.ToList();
+            var sId = Int32.Parse(Session["Id"].ToString());
+
+            var courseStudent = (from cs in db.CourseStudents
+                                 where cs.SId == sId
+                                 select cs).ToList();
+            ViewBag.CourseStudents = courseStudent;
+
+            //var student = db.Students.Find(sId);
+            //var studentCourses =student.CourseStudents;
             return View(courses);
         }
         [HttpPost]
         public ActionResult Index(int[] Courses) {
-            var id = Int32.Parse(Session["Id"].ToString());
+            var sid = Int32.Parse(Session["Id"].ToString());
 
 
             var registration = (from r in db.Registrations
-                                where r.SId == id && "Sp24-25".Equals(r.Semester)
+                                where r.SId == sid && "Sp24-25".Equals(r.Semester)
                                 select r).SingleOrDefault();
             if (registration == null)
             {
                 registration = new Registration()
                 {
                     EnrollDate = DateTime.Now,
-                    SId = Int32.Parse(Session["Id"].ToString()),
+                    SId = sid,
                     Semester = "Sp24-25",
                     Status="Enrolled"
 
@@ -41,14 +55,27 @@ namespace StudentMgt.Controllers
             }
             foreach (var item in Courses)
             {
-                var cs = new CourseStudent() { 
-                    CourseId = item,
-                    SId = Int32.Parse(Session["Id"].ToString()),
-                    RegId = registration.Id,
-                    Date = DateTime.Now,
-                    Status ="invalid"
-                };
-                db.CourseStudents.Add(cs);
+                if (!IsExist(item,sid,registration.Id)) {
+
+                    var course = db.Courses.Find(item);
+                    if (course.CourseStudents.Count < course.MaxCapacity)
+                    {
+                        var cs = new CourseStudent()
+                        {
+                            CourseId = item,
+                            SId = sid,
+                            RegId = registration.Id,
+                            Date = DateTime.Now,
+                            Status = "invalid"
+                        };
+                        db.CourseStudents.Add(cs);
+                    }
+                    else {
+                        TempData["Msg"] += course.Name+" could not be added";
+                    }
+                    
+                }
+                
 
             }
             db.SaveChanges();
@@ -56,6 +83,14 @@ namespace StudentMgt.Controllers
 
 
             return RedirectToAction("Index","Home");
+        }
+        private bool IsExist(int cId, int sId, int regId) {
+            var data = (from cs in db.CourseStudents
+                        where cs.RegId == regId && cs.CourseId == cId
+                        && cs.SId == sId
+                        select cs).SingleOrDefault();
+            if (data != null) return true;
+            return false;
         }
     }
 }
