@@ -128,6 +128,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Auth\AdminAuth.cs" />
+    <Compile Include="Auth\UserAuth.cs" />
+    <Compile Include="Controllers\DashoboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -238,6 +241,10 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Cart.cshtml" />
+    <Content Include="Views\Dashoboard\HomeUser.cshtml" />
+    <Content Include="Views\Dashoboard\MyOrders.cshtml" />
+    <Content Include="Views\Dashoboard\ODetails.cshtml" />
+    <Content Include="Views\Dashoboard\HomeAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

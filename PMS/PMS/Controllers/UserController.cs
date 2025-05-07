@@ -55,9 +55,17 @@ namespace PMS.Controllers
                         select u).SingleOrDefault();
             if (user != null) {
                 Session["User"] = user;
-                if (user.UserType.Equals("Customer")) {
-                    return RedirectToAction("Index", "Order");
+                if (TempData["RC"] != null)
+                {
+                    return RedirectToAction(TempData["RA"].ToString(), TempData["RC"].ToString());
                 }
+                else if (user.UserType.Equals("Customer"))
+                {
+                    return RedirectToAction("HomeUser", "Dashoboard");
+                }
+                else if (user.UserType.Equals("Admin")) {
+                    return RedirectToAction("HomeAdmin", "Dashoboard");
+                }   
             }
             TempData["Msg"] = "Username or password invalid";
             TempData["Class"] = "danger";

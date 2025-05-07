@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PMS.EF.Order>
+
+@{
+    ViewBag.Title = "HomeAdmin";
+}
+
+<h2>HomeAdmin</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CusId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CusId)
+        </td>
+        <td>
+            
+            <a class="btn btn-primary">Details</a>
+            <a href="/Dashoboard/AcceptOrder/@item.Id" class="btn btn-success">Accept</a>
+            <a class="btn btn-danger">Reject</a>
+        </td>
+    </tr>
+}
+
+</table>

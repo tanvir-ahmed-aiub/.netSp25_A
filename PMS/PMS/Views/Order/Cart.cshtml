@@ -21,12 +21,19 @@
             @Html.DisplayNameFor(model => model.Qty)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CId)
+            Unit Total
         </th>
         <th></th>
     </tr>
+    @{ 
+        decimal gtotal = 0;
+    }
+@foreach (var item in Model)
+{
 
-@foreach (var item in Model) {
+    decimal unitTotal = item.Price * item.Qty;
+    gtotal += unitTotal;
+
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -35,17 +42,26 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Qty)
+            <a href="/order/cartdec/@item.Id">
+                <span class="glyphicon glyphicon-minus"></span>
+            </a>
+            
+            <input  type="number" style="width:50px"  disabled value="@Html.DisplayFor(modelItem => item.Qty)" />
+            <a href="/order/cartinc/@item.Id">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @unitTotal
         </td>
     </tr>
 }
-
+    <tr>
+        <th class="text-right" colspan="3">Grand Total</th>
+        <th>@gtotal</th>
+    </tr>
 </table>
+<form method="post" action="/order/placeOrder">
+    <input type="hidden" name="Total" value="@gtotal"/>
+    <input type="submit" value="Place Order" class="btn btn-danger"/>
+</form>
