@@ -1,0 +1,12 @@
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\BLL.dll
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\BLL.pdb
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\DAL.dll
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\DAL.pdb
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\obj\Debug\BLL.dll
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\obj\Debug\BLL.pdb
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\DAL.dll.config
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\IntroTier\BLL\bin\Debug\EntityFramework.xml

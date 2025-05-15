@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{500FE1BE-7A94-4FF5-ACED-0DFCC616243A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="EF\Category.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Customer.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Employee.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Login.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Order.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\OrderDetail.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PMS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PMS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PMS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PMS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Product.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Status.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sysdiagram.cs">
+      <DependentUpon>PMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\CategoryRepo.cs" />
+    <Compile Include="Repos\CustomerRepo.cs" />
+    <Compile Include="Repos\ProductRepo.cs" />
+    <Compile Include="Repos\Repo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="EF\PMS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PMS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="EF\PMS.edmx.diagram">
+      <DependentUpon>PMS.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\PMS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PMS.Context.cs</LastGenOutput>
+      <DependentUpon>PMS.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\PMS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PMS.edmx</DependentUpon>
+      <LastGenOutput>PMS.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
