@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <script>
+            function loadData(){
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status==200) {
+                        debugger;
+                        var innerText="";
+                        var data = JSON.parse(this.responseText);
+                        for(var i=0;i<data.length;i++){
+                            innerText += "<tr><td>"+data[i].Id+"</td><td>"+data[i].Name+"</td></tr>";
+                        }
+                        var tbody = document.getElementById("tbody");
+                        tbody.innerHTML = innerText;
+                    }
+                };
+                xhttp.open("GET", "https://localhost:44341/api/category/all");
+                xhttp.setRequestHeader("Authorization",localStorage.getItem("token"));
+                xhttp.send();
+                
+            }
+
+            function formProcess(){
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        loadData();
+                    }
+                };
+                xhttp.open("POST", "https://localhost:44341/api/category/create");
+                var name = document.getElementById("name").value;
+                var obj = JSON.stringify({
+                    Name : name
+                });
+                xhttp.setRequestHeader("Content-Type","application/json");
+                xhttp.send(obj);
+
+            }
+
+            function login(){
+                var user = {
+                    UName: document.getElementById("uname").value,
+                    Password: document.getElementById("pass").value,
+                };
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status==200) {
+                        //loadData();
+                        var token = JSON.parse(this.responseText);
+                        localStorage.setItem("token",token.Key);
+                        debugger;
+                    }
+                    
+                };
+                xhttp.open("POST", "https://localhost:44341/api/login"); 
+                xhttp.setRequestHeader("Content-Type","application/json");
+                xhttp.send(JSON.stringify(user));
+            }
+            function logout(){
+
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status==200) {
+                        //loadData();
+                        var token = JSON.parse(this.responseText);
+                        localStorage.setItem("token",token.Key);
+                        debugger;
+                    }
+                    
+                };
+                xhttp.open("POST", "https://localhost:44341/api/logout"); 
+                xhttp.setRequestHeader("Authorization",localStorage.getItem("token"));
+                xhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="text" placeholder="Username" id="uname">
+            <input type="password" placeholder="Password" id="pass">
+            <br>
+            <input type="button" onclick="login()" value="Login"><input type="button" onclick="logout()" value="Logout">
+        </form>
+        <form>
+            <input type="text" id="name">
+            <input type="button" onclick="formProcess()" value="Create">
+        </form>
+        <button onclick="loadData()">
+            Load Data
+        </button>
+        <table border="1" style="border-collapse: collapse;">
+            <thead>
+                <th>Id</th>
+                <th>Name</th>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </body>
+</html>

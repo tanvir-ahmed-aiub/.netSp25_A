@@ -16,3 +16,4 @@ C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\DAL\obj\Debug\DAL.Migrations.P
 C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\DAL\obj\Debug\DAL.Migrations.QtyProductNull.resources
 C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\DAL\obj\Debug\DAL.Migrations.ProductCateNameVarchar.resources
 C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\DAL\obj\Debug\DAL.Migrations.PKFKCateProduct.resources
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\DAL\obj\Debug\DAL.Migrations.UserandToken.resources

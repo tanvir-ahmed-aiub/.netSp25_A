@@ -7,3 +7,8 @@ C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\obj\Debug\BLL.csproj.CoreC
 C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\obj\Debug\BLL.dll
 C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\obj\Debug\BLL.pdb
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\bin\Debug\AutoMapper.dll
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\bin\Debug\DAL.dll.config
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\bin\Debug\AutoMapper.xml
+C:\Users\Tanvir Ahmed\Desktop\.NET\A\TieriwthEFCF\BLL\bin\Debug\EntityFramework.xml

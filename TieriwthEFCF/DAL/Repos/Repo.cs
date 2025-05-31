@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Repos
 {
-    public class Repo
+    internal class Repo
     {
         protected PMSContext db;
-        public Repo() { 
+        internal Repo() { 
             db = new PMSContext();
         }
     }

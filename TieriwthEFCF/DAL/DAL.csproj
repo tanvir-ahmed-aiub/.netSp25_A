@@ -52,9 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DataAccess.cs" />
     <Compile Include="EF\PMSContext.cs" />
     <Compile Include="EF\Tables\Category.cs" />
     <Compile Include="EF\Tables\Product.cs" />
+    <Compile Include="EF\Tables\Token.cs" />
+    <Compile Include="EF\Tables\User.cs" />
+    <Compile Include="Interfaces\IAuth.cs" />
+    <Compile Include="Interfaces\IRepo.cs" />
     <Compile Include="Migrations\202505210504560_InitDBwithCategory.cs" />
     <Compile Include="Migrations\202505210504560_InitDBwithCategory.designer.cs">
       <DependentUpon>202505210504560_InitDBwithCategory.cs</DependentUpon>
@@ -75,9 +80,17 @@
     <Compile Include="Migrations\202505210531342_PKFKCateProduct.designer.cs">
       <DependentUpon>202505210531342_PKFKCateProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202505280553392_UserandToken.cs" />
+    <Compile Include="Migrations\202505280553392_UserandToken.designer.cs">
+      <DependentUpon>202505280553392_UserandToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\CategoryRepo.cs" />
+    <Compile Include="Repos\CategoryRepoV2.cs" />
     <Compile Include="Repos\Repo.cs" />
+    <Compile Include="Repos\TokenRepo.cs" />
+    <Compile Include="Repos\UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -98,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202505210531342_PKFKCateProduct.resx">
       <DependentUpon>202505210531342_PKFKCateProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202505280553392_UserandToken.resx">
+      <DependentUpon>202505280553392_UserandToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
